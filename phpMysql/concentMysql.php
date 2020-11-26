@@ -15,6 +15,13 @@ $link = dbConnect
 $keyWords = isset($_GET['keyWords']) ?
     mysqli_real_escape_string($link,$_GET['keyWords']): '';
 
+$str = '?'.http_build_query($_GET);
+unset($_GET['page']);
+echo $str;
+echo '<br>';
+
+
+
 
 //分页
 $countSql = "select count(*) as count  from students where sname like '% $keyWords%'";
@@ -63,7 +70,8 @@ mysqli_close($link);
 
 <table border="1" cellspacing="0">
     <h2> 学生信息表</h2>
-    <form method="get" action="concentMysql.php">
+    <form method="get" action="concentMysql.php?keyWords=<?= $keyWords?>&page=<?= $page?>">
+
         <input type="text" name="keyWords">
         <input type="submit" value="搜索">
     </form>

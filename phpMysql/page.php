@@ -7,14 +7,14 @@
 <body>
 <?php
 //设置响应头 引入封装函数
-header("content-type:text/html;charset=utf-8");
+//header("content-type:text/html;charset=utf-8");
 require_once './utils/dbFunction.php';
 
 //连接数据库
-$link = dbConnect("127.0.0.1", "root", "WAN123", "stum");
+$link = dbConnect("127.0.0.1", "root", "WAN123", "test");
 
 //分页
-$countSql = 'select count(*) as count  from students';
+$countSql = 'select count(*) as count  from emp_info';
 $countArr = dbFetchOne($link, $countSql);
 
 $count = $countArr['count'];
@@ -35,7 +35,7 @@ $offset = ($page - $minPage) * $pageSize;
 
 $limit = " limit $offset,$pageSize";
 //将条件拼接到sql上
-$sql = 'select * from students' . $limit;
+$sql = 'select * from emp_info e left join dept_info d on e.emp_dept_id=d.dept_id' . $limit;
 echo '--------------' . $sql;
 
 //查询全部的数据
@@ -52,16 +52,16 @@ mysqli_close($link);
         <th>姓名</th>
         <th>部门</th>
         <th>出生日期</th>
-        <th>部门</th>
+        <th>入职日期</th>
     </tr>
     <?php foreach ($arr as $item) { ?>
 
         <tr>
-            <td><?= $item['sno'] ?></td>
-            <td><?= $item['sname'] ?></td>
-            <td><?= $item['sex'] ?></td>
-            <td><?= $item['sbirthday'] ?></td>
-            <td><?= $item['sdept'] ?></td>
+            <td><?= $item['emp_id'] ?></td>
+            <td><?= $item['emp_name'] ?></td>
+            <td><?= $item['dept_name'] ?></td>
+            <td><?= $item['emp_birth'] ?></td>
+            <td><?= $item['emp_entry'] ?></td>
         </tr>
 
     <?php } ?>
