@@ -74,7 +74,8 @@ if(empty($_POST)){
     echo 'sql =======>>'.$insertSql;
     dbQuery($link,$insertSql);
 
-    echo '<a href="page.php"> 返回员工列表</a>';
+    header('location:./page.php');
+//    echo '<a href="page.php"> 返回员工列表</a>';
     echo '<br>';
     die('员工信息插入成功');
 }

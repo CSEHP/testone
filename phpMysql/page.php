@@ -46,13 +46,15 @@ mysqli_close($link);
 ?>
 
 <table border="1" cellspacing="0">
-    <h2>学生信息表</h2>
+    <h2>员工信息表</h2>
+    <h3><a href="addEmp.php"> 添加员工</a></h3>
     <tr>
         <th>ID</th>
         <th>姓名</th>
         <th>部门</th>
         <th>出生日期</th>
         <th>入职日期</th>
+        <th>操作</th>
     </tr>
     <?php foreach ($arr as $item) { ?>
 
@@ -62,6 +64,10 @@ mysqli_close($link);
             <td><?= $item['dept_name'] ?></td>
             <td><?= $item['emp_birth'] ?></td>
             <td><?= $item['emp_entry'] ?></td>
+            <td>
+                <a href="editEmp.php?id=<?=$item['emp_id']?>">编辑</a>  ||
+                <a href="deleteEmp.php?id=<?=$item['emp_id']?>">删除</a>
+            </td>
         </tr>
 
     <?php } ?>
@@ -73,7 +79,7 @@ mysqli_close($link);
     <span>上一页</span>
 <?php } else { ?>
     <a href="page.php?page=<?= $minPage ?>">首页</a>
-    <a href="page.php?page=<?= $page - 1 ?>">上一页</a>
+    <a href="page.php?page=<?= $page -1 ?>">上一页</a>
 <?php } ?>
 
 
@@ -81,7 +87,7 @@ mysqli_close($link);
     <span>下一页</span>
     <span>尾页</span>
 <?php } else { ?>
-    <a href="page.php?page=<?= $page + 1 ?>">下一页</a>
+    <a href="page.php?page=<?= $page +1  ?>">下一页</a>
     <a href="page.php?page=<?= $maxPage ?>">尾页</a>
 
 <?php } ?>
