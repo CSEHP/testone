@@ -58,7 +58,7 @@ if (!empty($_POST)) {
     }
     $md5Upwd =md5(md5($upwd).$userNameInfo['usalt']);
     echo 'md5 处理后的密码'.$md5Upwd;
-
+// TODO 注册是应该 使用相同规则 参考 aboutCookie/md5test.php
     $loginSql = "select * from users where uname='$uname' and  upwd ='$md5Upwd'";
     //执行sql
     $res = mysqli_query($link, $loginSql);
