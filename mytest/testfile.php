@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-echo  'test file';
+echo  'test file myfile';
 ?>
 </body>
 </html>
