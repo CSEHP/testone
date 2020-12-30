@@ -42,7 +42,7 @@ if(empty($_POST)){
         'emp_birth',
         'emp_entry'
     ];
-
+//  字段为varchar 类型 的 字段 需要加上单引号‘’的集合
     $strArr = [
         'emp_name',
         'emp_birth',
