@@ -49,3 +49,18 @@ for ($i=$start;$i<$codeLen;$i++){
 echo '验证码：'.$code.'</br>';
 
 
+$array = array(1, 2, 2, 3);
+$array = array_unique($array);
+print_r($array);
+
+
+
+
+$sum=0;
+for ($i=0;$i<=10;$i++){
+    if ($i%2==0){
+        $sum=$sum+$i;
+    }
+}
+
+echo $sum.'------------------';

@@ -81,7 +81,7 @@ if (!empty($_POST)) {
         'uname'=>$userInfo['uname']
     );
 
-    header('location:./index.php');
+    header('location:./student.php');
 
 }
 

@@ -16,7 +16,7 @@ function makeWaterMark($imagePath, $waterMarkPath,$place='rightDown')
 
 //获取图片信息
     $imageInfo = getimagesize($imagePath);
-    list($imageWidth, $imageHeight) = $imageInfo;
+    list($imageWidth, $imageHeight) = $imageInfo; // 按数组顺序将值赋给list中的width height 两个变量
     $imageMime = $imageInfo['mime'];
 
     $waterInfo = getimagesize($waterMarkPath);
@@ -47,7 +47,8 @@ function makeWaterMark($imagePath, $waterMarkPath,$place='rightDown')
     }
 
 
-    imagecopy($image, $waterImage, $srcX, $srcY, 0, 0, $waterWidth, $waterHeight);
+    imagecopy($image, $waterImage, $srcX, $srcY,
+        0, 0, $waterWidth, $waterHeight);
 
     header("content-type:$imageMime");
     $toFunction[$imageMime]($image);

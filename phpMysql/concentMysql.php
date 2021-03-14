@@ -9,8 +9,7 @@
 //引入函数文件
 require_once './utils/dbFunction.php';
 //链接数据库
-$link = dbConnect
-('127.0.0.1','root','WAN123','stum');
+$link = dbConnect('127.0.0.1','root','WAN123','stum');
 //拿到关键字
 $keyWords = isset($_GET['keyWords']) ?
     mysqli_real_escape_string($link,$_GET['keyWords']): '';
