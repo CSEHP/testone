@@ -4,5 +4,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteRule ^(.*)$ index.php/$s1 [QSA,PT,l]
-RewriteRule ^(.*)$ index.php/$s1 [QSA,PT,l,E=PATH_INFO:$s1]
+RewriteRule ^(.*)$ index.php [QSA,PT,l,E=PATH_INFO:$s1]
 </IfModule>
