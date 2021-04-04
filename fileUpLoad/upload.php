@@ -27,6 +27,7 @@ if (!empty($fileInfo['name'])){
         }
 
         $res = move_uploaded_file($fileInfo['tmp_name'],"$filePath/$filName");
+
         if ($res){
             exit('图片上传成功！');
         }else{

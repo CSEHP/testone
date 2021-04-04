@@ -12,6 +12,7 @@ class Bank implements Payment
         $this->umoney = $umoney;
         $this->upwd = $upwd;
     }
+
 //支付方法
     function pay()
     {

@@ -30,6 +30,7 @@ function dbFetchOne($link,$sql){
     mysqli_free_result($res);
     return $arr;
 }
+
 //封装查询所有记录 函数
 function dbFetchAll($link,$sql){
     $res = dbQuery($link,$sql);

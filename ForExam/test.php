@@ -6,6 +6,7 @@ $ms = microtime();
 echo md5(md5($fileName).$ms).'<br>';
 echo strtoupper(trim($fileName));
 
+
 //分页原理
 //    定义最小页码
 //    定义每页的记录条数

@@ -48,6 +48,7 @@ public $link;
      * @param $sql
      * @return string[]|null
      */
+
     public function fetchOne($link,$sql)
     {
         $res = $this->query($link,$sql);

@@ -6,4 +6,5 @@ $imagePath= './image.jpg';
 $WaterImagePath= './watermark.png';
 //print_r(getimagesize($imagePath))  ;
 
+
 imageAddWatermark($imagePath,$WaterImagePath);

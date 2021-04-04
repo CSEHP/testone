@@ -5,4 +5,5 @@ header('content-type:text/html;charset=utf-8');
 $imagePath = './image.jpg';
 $waterMarkPath ='./watermark.png';
 
+
 makeWaterMark($imagePath,$waterMarkPath,'rightDown');

@@ -22,7 +22,6 @@ if($action=='logout'){
     session_destroy();
 }
 
-
 //登录表单处理
 if (!empty($_POST)) {
 

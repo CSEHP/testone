@@ -54,8 +54,6 @@ $array = array_unique($array);
 print_r($array);
 
 
-
-
 $sum=0;
 for ($i=0;$i<=10;$i++){
     if ($i%2==0){

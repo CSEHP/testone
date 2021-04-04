@@ -21,6 +21,7 @@ $image = imagecreatetruecolor($imageWidth,$imageHeight);
 $imageColor = imagecolorallocate($image,26,26,26);
 imagefill($image,0,0,$imageColor);
 
+
 //给画布 一个红色边框
 $rectangleColor = imagecolorallocate($image,255,0,0);
 imagerectangle($image,0,0,$imageWidth-1,$imageHeight-1,$rectangleColor);

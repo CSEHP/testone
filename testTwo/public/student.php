@@ -2,6 +2,7 @@
 //require '../app/StudentController.php';
 //$student = new StudentController();
 //$student->index();
+
             echo '进入到方法';
             echo '<hr>';
 $pathInfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';

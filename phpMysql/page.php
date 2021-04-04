@@ -23,7 +23,6 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : $minPage;
 $pageSize = 3;
 $maxPage = ceil($count / $pageSize);
 
-
 if ($page > $maxPage) {
     $page = $maxPage;
 }

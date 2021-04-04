@@ -11,6 +11,7 @@ class Apple extends Fruit
         $this->price = $price;
         $this->FWigth = $FWight;
     }
+
 //    定义方法
     function show_apple(){
         echo "类型：".$this->FType."，颜色：".$this->FColor.",价格：".

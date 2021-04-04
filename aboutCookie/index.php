@@ -12,6 +12,7 @@ if(isset($_SESSION['userInfo']['uname']) && $_SESSION['userInfo']['isLogin']=='1
     $isLogin=true;
 }
 
+
 if(!$isLogin){
     die('未登录');
     header('location:./login.php');

@@ -17,6 +17,7 @@ $empInfo= dbFetchOne($link,$empSql);
 if(!$empInfo){
     die('员工信息不存在！');
 }
+
 $delSql = "delete from emp_info where emp_id=$id";
 dbQuery($link,$delSql);
 

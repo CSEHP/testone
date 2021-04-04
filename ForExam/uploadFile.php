@@ -1,6 +1,7 @@
 <?php
 $fileInfo = $_FILES['upFile'];
 echo '<pre>';
+
 print_r($fileInfo);
 $fileType = substr(strrchr($fileInfo['name'],'.'),1);
 echo $fileType.'<br>';

@@ -20,8 +20,6 @@ echo $str;
 echo '<br>';
 
 
-
-
 //分页
 $countSql = "select count(*) as count  from students where sname like '% $keyWords%'";
 $countArr = dbFetchOne($link, $countSql);

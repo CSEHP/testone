@@ -32,6 +32,7 @@ $link = dbConnect('127.0.0.1','root','WAN123','test');
 //    }
 //}
 
+
 if(empty($_POST)){
     $deptSql = 'select * from dept_info';
     $deptArr = dbFetchAll($link,$deptSql);

@@ -34,6 +34,7 @@ echo '<table border="1px"><tr align="center"><th colspan="6">学习时长统计<
         <td>线下学习时长(h)</td>
         <td>总学习时长(h)</td>
  </tr>';
+
 //将数据遍历到表格里面
 $sumLineTime=0;
 $sumOffTime=0;

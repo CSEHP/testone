@@ -1,4 +1,5 @@
 <?php
+
 header("content-type:text/html; charset=utf-8");
 
 $fileInfo = $_FILES['upFile'];   //文件信息

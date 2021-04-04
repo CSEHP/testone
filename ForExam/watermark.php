@@ -7,6 +7,7 @@ function imageAddWatermark($imagePath,$watermarkPath){
         'image/png'=>'imagecreatefrompng',
         'image/gif'=>'imagecreatefromgif'
     ];
+
     $toFunction =[
         'image/jpeg'=>'imagejpeg',
         'image/png'=>'imagepng',

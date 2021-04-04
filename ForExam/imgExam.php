@@ -39,6 +39,7 @@ for ($i=1;$i<=$codeLen;$i++){
                 __DIR__.'/font.ttf',$code[$i-1]);
 }
 
+
 // 输出到浏览器后销毁
 header('content-type:image/png');
 imagepng($img);

@@ -23,7 +23,6 @@ $empSql="select * from emp_info where emp_id =$id";
 $empInfo= dbFetchOne($link,$empSql);
 
 
-
 //准备 更新 需要的 信息
 if(empty($_POST)){
     $deptSql = 'select * from dept_info';

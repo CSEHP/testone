@@ -53,7 +53,6 @@ $redArr = range(1, 33); //生成1-33的数组$redArr
 $red = array_rand($redArr, 6); //在$redArr数组里随机选取六个数字的下标赋值给$red
 shuffle($red); //将$red里的数据打乱
 
-
 echo '<br>';
 echo '红色球：';
 foreach ($red as $key) {  //遍历$red
