@@ -8,7 +8,7 @@ class Container
 
     public function make($class)
     {
-        if (!is_set($this->instances[$class])) {
+        if (!isset($this->instances[$class])) {
             $this->instances[$class]= new $class;
         }
         return  $this->instances[$class];

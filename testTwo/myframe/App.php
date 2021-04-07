@@ -8,8 +8,8 @@ class App extends Container
     public function __construct()
     {
     //   return $this->request = new Request();
-        // $this->request = Container::getInstance()->make(Request::class);
-        $this->request= $this->make(Request::class);
+    // $this->request = Container::getInstance()->make(Request::class);
+        $this->request = $this->make(Request::class);
     }
 
     //run 方法 去检查路由 和 dispath 方法 的 调用
