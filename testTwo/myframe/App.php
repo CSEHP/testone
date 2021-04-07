@@ -1,13 +1,15 @@
 <?php
 namespace myframe;
 
-class App
+class App extends Container
 {
     protected  $request;
 
     public function __construct()
     {
-        $this->request = new Request();
+    //   return $this->request = new Request();
+        // $this->request = Container::getInstance()->make(Request::class);
+        $this->request= $this->make(Request::class);
     }
 
     //run 方法 去检查路由 和 dispath 方法 的 调用
@@ -42,7 +44,8 @@ class App
         {
             die('请求的控制器'.$className.'不存在!');
         }
-        return new $className();
+        // return new $className();
+        return $this->make($className);
     }
 
     //实例化 对象 调用对应方法
@@ -50,6 +53,8 @@ class App
     {
         list($controller,$action) =$dispath;
         $instance =$this->controller($controller);
-        $instance->$action();
+        $data =$instance->$action();
+
+        return Response::create($data);
     }
 }

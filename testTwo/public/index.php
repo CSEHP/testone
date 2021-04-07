@@ -2,7 +2,8 @@
 namespace myframe;
 
 require '../vendor/autoload.php';
-(new App())->run();
+// (new App())->run()->send();
+App::getInstance()->run()->send();
 
 //require '../app/StudentController.php';
 //$student = new StudentController();
