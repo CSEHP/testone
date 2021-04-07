@@ -11,7 +11,7 @@ class Response
     {
         $this->data=$data;
         $this->code=$code;
-        $this->array_merage($this->header,$header);
+        $this->header=array_merge($this->header,$header);
     }
 
     public  function send()
