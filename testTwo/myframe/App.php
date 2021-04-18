@@ -1,60 +1,85 @@
 <?php
 namespace myframe;
 
+use ReflectionMethod;
+use Exception;
+
 class App extends Container
 {
-    protected  $request;
-
+    protected $request;
+    protected $debug = true;
+    /**
+     * @description: 创建Request对象初始化成员属性$request
+     */
     public function __construct()
     {
-    //   return $this->request = new Request();
-    // $this->request = Container::getInstance()->make(Request::class);
+        $this->instances[App::class] = $this;
         $this->request = $this->make(Request::class);
     }
-
-    //run 方法 去检查路由 和 dispath 方法 的 调用
+    /**
+     * @description: 启动应用
+     * @return {Response} 响应对象
+     */
     public function run()
     {
-        $dispath = $this->routCheck();
-        $this->dispath($dispath);
+        try {
+            $dispatch = $this->routeCheck();
+            return $this->dispatch($dispatch);
+        } catch (Exception $e) {
+            $msg = $this->debug ? $e->getMessage() : '';
+            return Response::create('系统发生错误: '.$msg, 403);
+        }
     }
-
-    public function routCheck()
+    /**
+     * @description: 路由检测
+     * @return {array} 控制器和方法名
+     */
+    public function routeCheck()
     {
-        $pathinfo=$this->request->pathInfo();
+        $pathinfo = $this->request->pathinfo();
         $controller = dirname($pathinfo);
         $action = basename($pathinfo);
-        $arr =explode('/',ucwords($controller,'/'));
-        $controller =implode('\\',$arr).'Controller';
+        $arr = explode('/', ucwords($controller, '/'));
+        $controller = implode('\\', $arr).'Controller';
         $arr[] = $action;
-
-        foreach ($arr as $item) {
-            if (!preg_match('/^[A-Za-z]\w{0,20}$/', $item))
-            {
-                die('请求参数 包含 特殊字符！！');
+        foreach ($arr as $v) {
+            if (!preg_match('/^[A-Za-z]\w{0,20}$/', $v)) {
+                // $e = new Exception('请求参数包含特殊字符');
+                // throw $e;
+                throw new Exception('请求参数包含特殊字符');
             }
         }
-        return [$controller,$action];
+        return [$controller, $action];
     }
-
+    /**
+     * @description: 请求分发
+     * @param {array} $dispatch 前两个元素是控制器和方法名
+     * @return {Response} 响应对象
+     */
+    public function dispatch(array $dispatch)
+    {
+        list($controller, $action) = $dispatch;
+        $instance = $this->controller($controller);
+        if (is_callable([$instance, $action])) {
+            $method = new ReflectionMethod($instance, $action);
+        } else {
+            throw new Exception('操作不存在：'.get_class($class).'/'.$action);
+        }
+        $args = $this->bindParams($method);
+        $data = $method->invokeArgs($instance, $args);
+        return Response::create($data);
+    }
+    /**
+     * @description: 根据控制器名称创建控制器实例
+     * @param {*} $name 控制器名
+     * @return {*} 控制器实例
+     */
     public function controller($name)
     {
         $className = '\\App\\Http\\Controllers\\'.$name;
-        if (!class_exists($className))
-        {
-            die('请求的控制器'.$className.'不存在!');
+        if (!class_exists($className)) {
+            throw new Exception('请求的控制器：'.$className.'不存在！');
         }
-        // return new $className();
         return $this->make($className);
-    }
-
-    //实例化 对象 调用对应方法
-    public function dispath(array $dispath)
-    {
-        list($controller,$action) =$dispath;
-        $instance =$this->controller($controller);
-        $data =$instance->$action();
-
-        return Response::create($data);
     }
 }

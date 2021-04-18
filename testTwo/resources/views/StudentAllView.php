@@ -18,7 +18,7 @@
             <td><?php echo $item['sno']?></td>
             <td><?php echo $item['sname']?></td>
             <td><?php echo $item['sex']?></td>
-            <td><a href="student/getOne?sno=<?= $item['sno'] ?>">编辑</a></td>
+            <td><a href="getOne?sno=<?= $item['sno'] ?>">编辑</a></td>
         </tr>
     <?php }?>
 </table>
