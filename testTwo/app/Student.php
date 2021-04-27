@@ -9,38 +9,35 @@
  */
 namespace App;
 
-use mysqli;
+use myframe\DB;
 
 class Student
 {
-    private $link;
-    public function __construct()
+    protected $db;
+    public function __construct(DB $db)
     {
-        $this->link= new mysqli('127.0.0.1', 'root', 'WAN123', 'stum');
-        $this->link->set_charset('utf8');
+        $this->db =new DB();
     }
 
 //    查询所有
     public function getAll()
     {
         $sql = 'select * from students';
-        $res = $this->link->query($sql);
-        $data = $res->fetch_all(MYSQLI_ASSOC);
+        $data = $this->db->fetchAll($sql);
         return $data;
     }
 //    查询单个
     public function getOne($sno)
     {
-        $sql = "select * from students where sno=$sno ";
-        $res = $this->link->query($sql);
-        $data = $res->fetch_assoc();
+        $sql = 'select * from students where sno= ?';
+        $data = $this->db->fetchRow($sql, [$sno]);
         return $data;
     }
 //    更新操作
     public function update($sno, $sname, $sex)
     {
-        $sql = "update students set sname='$sname',sex ='$sex' where sno ='$sno'";
-        $res = $this->link->query($sql);
+        $sql = "update students set sname= ? ,sex = ? where sno = ?";
+        $res = $this->db->execute($sql, [$sname, $sex, $sno]);
         return $res;
     }
 }

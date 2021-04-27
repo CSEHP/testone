@@ -31,19 +31,12 @@ class StudentController
 //    查全
     public function index()
     {
-        // require 'StudentsModel.php';
-        // $model = new StudentsModel();
-
         $data = $this->studentModel->getAll();
         require VIEW_PATH.'StudentAllView.php';
     }
 //    查单
     public function getOne()
     {
-        // $sno = isset($_GET['sno']) ? $_GET['sno'] : '';
-        // require 'StudentsModel.php';
-        // $model = new StudentsModel();
-
         $sno =$this->request->get('sno');
         $data=$this->studentModel->getOne($sno);
         require VIEW_PATH.'StudentInfoView.php';
@@ -52,17 +45,9 @@ class StudentController
 //    更新操作
     public function update()
     {
-        // require 'StudentsModel.php';
-        // $model = new StudentsModel();
-        // $sno = $_POST['sno'];
-        // $sname =$_POST['sname'];
-        // $sex = $_POST['sex'];
-
         $sno=$this->request->post('sno');
         $sname=$this->request->post('sname');
         $sex=$this->request->post('sex');
-
-        echo $sno;
        
         $res = $this->studentModel->update($sno, $sname, $sex);
         if ($res) {
