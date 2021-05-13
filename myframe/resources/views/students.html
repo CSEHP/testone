@@ -1,0 +1,35 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-11 20:17:47
+ * @LastEditTime: 2021-05-13 10:11:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \myframe\resources\views\students.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息列表</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>编辑</th>
+        </tr>
+            {foreach  $data as $item}
+            <tr>
+                <td>{$item.id}</td>
+                <td>{$item.name}</td>
+                <td>{$item.gender}</td>
+                <td><a href="getOne?id={$item.id}">编辑</a></td>
+            </tr>
+            {/foreach}
+    </table>
+</body>
+</html>

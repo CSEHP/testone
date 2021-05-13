@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "myframe\\": "myframe//",
+            "test\\": "public"
+        }
+    },
+    "require": {
+        "smarty/smarty": "^3.1"
+    }
+}
